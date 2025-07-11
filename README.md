@@ -85,7 +85,7 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  motor_velocidade(SPEED_LOW);
+  motor_velocidade(SPEED_LOW);  // <---- 
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -93,7 +93,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  motor_volta_completa();
+	  motor_volta_completa(); // <----
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
