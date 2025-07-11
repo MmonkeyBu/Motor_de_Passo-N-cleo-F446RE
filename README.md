@@ -56,7 +56,7 @@ Abra o arquivo `MOTOR_DE_PASSO.h` e ajuste as macros na seção de configuraçã
 
 // ===================================================================
 ```
-###Para chamar na main.c
+### Para chamar na main.c
 ```c
 int main(void)
 {
