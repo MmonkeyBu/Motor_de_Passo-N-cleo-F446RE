@@ -53,8 +53,7 @@ Abra o arquivo `MOTOR_DE_PASSO.h` e ajuste as macros na seção de configuraçã
 #define MOTOR_IN4_PIN     IN4_Pin  // O nome do pino para a Bobina 4
 
 // ** IMPORTANTE: Verifique o datasheet do seu motor! **
-// Para um motor de 1.8°/passo, são 200 passos completos ou 400 meio-passos.
-#define MOTOR_PASSOS_POR_VOLTA 400
+
 // ===================================================================
 ```
 ###Para chamar na main.c
