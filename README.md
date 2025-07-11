@@ -12,8 +12,8 @@ Este driver foi desenvolvido e testado com o seguinte hardware, mas pode ser fac
 
 * **Microcontrolador:** STM32F446RE (Placa NUCLEO-F446RE)
 * **IDE:** STM32CubeIDE (v1.18.1 ou superior)
-* **Driver do Motor:** A4988 ou DRV8825
-* **Motor de Passo:** NEMA 17 (1.8° por passo, 200 passos/volta)
+* **Driver do Motor:** ULN2003
+* **Motor de Passo:** 28BYJ-48 (5.625°/64 )
 
 ---
 
@@ -21,7 +21,6 @@ Este driver foi desenvolvido e testado com o seguinte hardware, mas pode ser fac
 
 * **Controle Modular:** Lógica do motor encapsulada nos arquivos `MOTOR_DE_PASSO.c` e `.h`.
 * **Controle de Direção:** Funções para rotação nos sentidos horário e anti-horário.
-* **Sequência de Meio-Passo (Half-Step):** Permite uma rotação mais suave e com o dobro da resolução (400 passos/volta).
 * **Controle de Velocidade:** Função para ajustar a velocidade de rotação dinamicamente.
 * **Configuração Flexível:** Pinos e porta GPIO facilmente configuráveis através de macros no arquivo de header.
 
@@ -57,3 +56,47 @@ Abra o arquivo `MOTOR_DE_PASSO.h` e ajuste as macros na seção de configuraçã
 // Para um motor de 1.8°/passo, são 200 passos completos ou 400 meio-passos.
 #define MOTOR_PASSOS_POR_VOLTA 400
 // ===================================================================
+```
+###Para chamar na main.c
+```c
+int main(void)
+{
+
+  /* USER CODE BEGIN 1 */
+
+  /* USER CODE END 1 */
+
+  /* MCU Configuration--------------------------------------------------------*/
+
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  HAL_Init();
+
+  /* USER CODE BEGIN Init */
+
+  /* USER CODE END Init */
+
+  /* Configure the system clock */
+  SystemClock_Config();
+
+  /* USER CODE BEGIN SysInit */
+
+  /* USER CODE END SysInit */
+
+  /* Initialize all configured peripherals */
+  MX_GPIO_Init();
+  MX_USART2_UART_Init();
+  /* USER CODE BEGIN 2 */
+  motor_velocidade(SPEED_LOW);
+  /* USER CODE END 2 */
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+    /* USER CODE END WHILE */
+	  motor_volta_completa();
+    /* USER CODE BEGIN 3 */
+  }
+  /* USER CODE END 3 */
+}
+```
